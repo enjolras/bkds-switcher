@@ -32,7 +32,10 @@ SET (bkds2010_lib
 	commands/wipeparams.cpp
 	)
 
-add_library(bkds2010 SHARED ${bkds2010_lib})
+add_subdirectory(commands)
+add_subdirectory(effects)
+
+add_library(bkds2010 SHARED ${bkds2010_lib} ${bkds2010_lib_commands} ${bkds2010_lib_effects})
 
 set_target_properties(
 	bkds2010
