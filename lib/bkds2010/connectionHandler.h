@@ -7,16 +7,14 @@
 #define DEBUG_NC		for(int i=0;i<=nextCommand[0];i++) {printf("%02x ",nextCommand[i]);}printf("\n");
 
 class response;
-class obsConn;
 
 class connectionHandler {
 public:
-	connectionHandler(obsConn*);
+	connectionHandler();
 	unsigned char* getNextCommand();
 	void addResponse(response &);
 	void commitResponses();
 	void connect();
-	void sendToObs(std::string&);
 	
 private:
 	int fd;
@@ -25,7 +23,6 @@ private:
 	int setInterfaceAttribs(int, int);
 	void setBlocking(int);
 	void sendAck();
-	obsConn* obs_;
 };
 
 class response {

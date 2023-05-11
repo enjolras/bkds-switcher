@@ -19,6 +19,6 @@ bkds_switcher.cpp
 
 TARGET_LINK_LIBRARIES (bkds_switcher
 bkds2010
-bkdsobs
-bkdsweb
+#bkdsobs
+#bkdsweb
 )

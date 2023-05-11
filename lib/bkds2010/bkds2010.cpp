@@ -30,7 +30,6 @@
 #include "matteparams.h"
 #include "gpiin.h"
 #include "util.h"
-#include "obsConn.h"
 
 #define EFF_PPROW		0x00
 #define EFF_ME1ROW		0x01
@@ -54,16 +53,13 @@
 
 void init_effects(effectDispatcher*,connectionHandler*);
 
-int main() {
+int start() {
 
-	obsConn* obs = new obsConn();
-	connectionHandler *conn = new connectionHandler(obs);
+	connectionHandler *conn = new connectionHandler();
 	effectDispatcher *effDisp = new effectDispatcher(conn);
 
 	init_effects(effDisp,conn);
 	conn->connect();
-
-	obs->run();
 
 	while(true) {
 		effDisp->exec();

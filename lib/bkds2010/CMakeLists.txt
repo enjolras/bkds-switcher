@@ -1,9 +1,8 @@
 SET (bkds2010_lib
-	bkds_control.cpp
+	bkds2010.cpp
 	command.cpp
 	connectionHandler.cpp
 	effectDispatcher.cpp
-	wsDispatcher.cpp
 	key.cpp
 	ping.cpp
 	select_xpt.cpp

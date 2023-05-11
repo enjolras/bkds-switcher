@@ -12,18 +12,11 @@
 #include <sstream>
 
 #include "connectionHandler.h"
-#include "obsConn.h"
 
 using namespace std;
 
-connectionHandler::connectionHandler(obsConn* obs) : obs_(obs) {
+connectionHandler::connectionHandler() {
 	connect();
-}
-
-void connectionHandler::sendToObs(std::string& outStr) {
-
-	std::cout << "SEND TO OBS: " << outStr << std::endl;
-	obs_->send(outStr);
 }
 
 int connectionHandler::setInterfaceAttribs(int speed, int parity) {
