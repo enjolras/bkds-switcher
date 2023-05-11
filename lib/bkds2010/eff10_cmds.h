@@ -1,0 +1,7 @@
+#ifndef EFF10_CMDS_H
+#define EFF10_CMDS_H
+
+#define RD_CHRKEYPARAMS		0x1a	// CHROMA KEY PARAMS
+#define WR_CHRKEYPARAMS		0x9a
+
+#endif
