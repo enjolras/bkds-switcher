@@ -1,35 +1,35 @@
 SET (bkds2010_lib
 	bkds2010.cpp
-	command.cpp
 	connectionHandler.cpp
 	effectDispatcher.cpp
-	key.cpp
-	ping.cpp
-	select_xpt.cpp
-	tbar.cpp
-	auto_rate.cpp
-	eventmem.cpp
-	wipe.cpp
-	trans.cpp
-	dsk.cpp
-	eff00_13.cpp
-	eff01_a1.cpp
-	eff01_9c.cpp
-	eff01_8a.cpp
-	effect_keyer.cpp
-	effect_matte.cpp
-	effect_chr.cpp
-	eff25_82.cpp
-	eff2e_86.cpp
-	enable.cpp
-	sysinfo.cpp
-	setup_systm.cpp
-	wipepos.cpp
-	wipeparams.cpp
-	mixparams.cpp
-	matteparams.cpp
-	gpiin.cpp
-	util.cpp
+	commands/auto_rate.cpp
+	commands/command.cpp
+	commands/dsk.cpp
+	commands/eff00_13.cpp
+	commands/eff01_8a.cpp
+	commands/eff01_9c.cpp
+	commands/eff01_a1.cpp
+	commands/eff25_82.cpp
+	commands/eff2e_86.cpp
+	commands/effect_chr.cpp
+	commands/effect_keyer.cpp
+	commands/effect_matte.cpp
+	commands/enable.cpp
+	commands/eventmem.cpp
+	commands/gpiin.cpp
+	commands/key.cpp
+	commands/matteparams.cpp
+	commands/mixparams.cpp
+	commands/ping.cpp
+	commands/select_xpt.cpp
+	commands/setup_systm.cpp
+	commands/sysinfo.cpp
+	commands/tbar.cpp
+	commands/trans.cpp
+	commands/util.cpp
+	commands/wipe.cpp
+	commands/wipepos.cpp
+	commands/wipeparams.cpp
 	)
 
 add_library(bkds2010 SHARED ${bkds2010_lib})

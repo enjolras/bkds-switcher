@@ -31,26 +31,6 @@
 #include "gpiin.h"
 #include "util.h"
 
-#define EFF_PPROW		0x00
-#define EFF_ME1ROW		0x01
-#define EFF_10_UNK		0x10
-#define EFF_FRMEM1		0x14
-#define EFF_FRMEM2		0x15
-#define EFF_MATTE		0x18
-#define EFF_VPROC		0x1e
-#define EFF_CCR			0x1f
-#define EFF_SYSCTRL		0x20
-#define EFF_EVENTMEM	0x21
-#define EFF_PRGPGM		0x2e
-#define EFF_AUX1		0x30
-#define EFF_AUX2		0x31
-#define EFF_AUX3		0x32
-#define EFF_AUX4		0x33
-#define EFF_AUX5		0x34
-#define EFF_AUX6		0x35
-#define EFF_EDITPVW		0x3f
-#define EFF_PING		0xff
-
 void init_effects(effectDispatcher*,connectionHandler*);
 
 int start() {
