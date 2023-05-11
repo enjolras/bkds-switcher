@@ -33,7 +33,7 @@ SET (bkds2010_lib
 	util.cpp
 	)
 
-add_library(bkds2010 SHARE ${bkds2010_lib})
+add_library(bkds2010 SHARED ${bkds2010_lib})
 
 set_target_properties(
 	bkds2010
