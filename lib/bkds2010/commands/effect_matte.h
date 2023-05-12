@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class effect_matte : public command {
 public:
-	effect_matte(connectionHandler*, effect*);
+	effect_matte(std::shared_ptr<effect>);
 	void exec(unsigned char*);
 
 private:

@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "wipepos.h"
 
 using namespace std;
 
-#define EFF_PP		0x00
-#define EFF_ME1		0x01
-
-wipepos::wipepos(connectionHandler *conn, effect *eff) : command(conn, eff) {
+wipepos::wipepos(std::shared_ptr<effect> eff) : command(eff) {
 
     config_[0] = 0x80;
     config_[1] = 0x00;

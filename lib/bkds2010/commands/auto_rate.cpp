@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
-#include "effectDispatcher.h"
+#include "effect.h"
+#include "../effectDispatcher.h"
 #include "auto_rate.h"
 
 using namespace std;
 
-auto_rate::auto_rate(connectionHandler *conn, effect *eff) : command(conn, eff) {
+auto_rate::auto_rate(std::shared_ptr<effect> eff) : command(eff) {
 
 	switch(eff->myId()) {
 		case 0x00:

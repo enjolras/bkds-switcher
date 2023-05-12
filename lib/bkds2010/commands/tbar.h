@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class tbar : public command {
 public:
-	tbar(connectionHandler*, effect*);
+	tbar(std::shared_ptr<effect>);
 	void exec(unsigned char*);
 
 private:

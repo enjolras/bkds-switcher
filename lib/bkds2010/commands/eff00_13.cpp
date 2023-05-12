@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "eff00_13.h"
 
 using namespace std;
 
-#define EFF_PP		0x00
-#define EFF_ME1		0x01
-
-eff00_13::eff00_13(connectionHandler *conn, effect *eff) : command(conn, eff) {
+eff00_13::eff00_13(std::shared_ptr<effect> eff) : command(eff) {
 
 }
 

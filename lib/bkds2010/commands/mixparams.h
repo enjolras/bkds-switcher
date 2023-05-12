@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class mixparams : public command {
 public:
-    mixparams(connectionHandler*, effect*);
+    mixparams(std::shared_ptr<effect>);
     void exec(unsigned char*);
 
 private:

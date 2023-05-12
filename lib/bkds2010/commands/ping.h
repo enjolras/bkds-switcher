@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class ping : public command {
 public:
-	ping(connectionHandler*, effect*);
+	ping(std::shared_ptr<effect>);
 	void exec(unsigned char*);
 };
 

@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "effect_chr.h"
 
 using namespace std;
 
-effect_chr::effect_chr(connectionHandler *conn, effect *eff) : command(conn, eff) {
+effect_chr::effect_chr(std::shared_ptr<effect> eff) : command(eff) {
 
 	config_[0x05] = 0x01;
 	config_[0x0a] = 0x01;

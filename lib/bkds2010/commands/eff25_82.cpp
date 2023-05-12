@@ -1,18 +1,15 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "eff25_82.h"
 
 using namespace std;
 
-eff25_82::eff25_82(connectionHandler *conn, effect *eff) : command(conn, eff) {
+eff25_82::eff25_82(std::shared_ptr<effect> eff) : command(eff) {
 
 }
 
 void eff25_82::exec(unsigned char *nextCommand) {
-
-	DEBUG_NC
 
 	response tmpResp;
 	response tempRes[256];
@@ -50,7 +47,6 @@ void eff25_82::exec(unsigned char *nextCommand) {
 			tmpResp.addByte(nextCommand[i]);
 		}
 		conn()->addResponse(tmpResp);
-		tmpResp.debugResponse();
 	}
 
 }

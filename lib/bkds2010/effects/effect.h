@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include <memory>
 
 class connectionHandler;
 class effectDispatcher;
@@ -10,20 +11,21 @@ class command;
 
 class effect {
 public:
-	effect(unsigned char,effectDispatcher*);
+	effect(unsigned char,std::shared_ptr<effectDispatcher>);
 	void exec(unsigned char*);
-	void addCommand(unsigned char,command*);
+	void addCommand(unsigned char,std::shared_ptr<command>);
 	std::string name();
+	unsigned char whoAmI();
 
 protected:
-	effectDispatcher* effDisp();
+	std::shared_ptr<effectDispatcher> effDisp();
 	void setName(std::string);
 
 private:
-	effectDispatcher *effDisp_;
+	std::shared_ptr<effectDispatcher> effDisp_;
 	std::string name_;
 	unsigned char eff_;
-	std::map<unsigned char,command*> commands_;
+	std::map<unsigned char,std::shared_ptr<command> > commands_;
 };
 
 #endif

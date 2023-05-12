@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class sysinfo : public command {
 public:
-	sysinfo(connectionHandler*, effect*);
+	sysinfo(std::shared_ptr<effect>);
 	void exec(unsigned char*);
 };
 

@@ -4,12 +4,12 @@
 #include <map>
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class select_xpt : public command {
 public:
-	select_xpt(connectionHandler*, effect*);
+	select_xpt(std::shared_ptr<effect>);
 	void exec(unsigned char*);
 
 private:

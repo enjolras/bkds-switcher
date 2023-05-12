@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "trans.h"
 
 using namespace std;
 
-#define EFF_PP		0x00
-#define EFF_ME1		0x01
-
-trans::trans(connectionHandler *conn, effect *eff) : command(conn, eff) {
+trans::trans(std::shared_ptr<effect> eff) : command(eff) {
 
     config_[0x90] = 0x01;
     config_[0x91] = 0x02;

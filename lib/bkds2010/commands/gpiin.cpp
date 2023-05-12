@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <cstring>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "gpiin.h"
 
@@ -10,7 +9,7 @@ using namespace std;
 #define EFF_PP		0x00
 #define EFF_ME1		0x01
 
-gpiin::gpiin(connectionHandler *conn, effect *eff) : command(conn, eff) {
+gpiin::gpiin(std::shared_ptr<effect> eff) : command(eff) {
 
 	memset(status00,0x00,sizeof(status00));
 	status00[0x07][0] = 0x20;

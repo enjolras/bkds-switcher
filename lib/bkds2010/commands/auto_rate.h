@@ -3,12 +3,11 @@
 
 #include "command.h"
 
-class connectionHandler;
 class effect;
 
 class auto_rate : public command {
 public:
-    auto_rate(connectionHandler*, effect*);
+    auto_rate(std::shared_ptr<effect>);
     void exec(unsigned char*);
 
 private:

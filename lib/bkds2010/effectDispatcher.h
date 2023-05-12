@@ -3,20 +3,21 @@
 
 #include <map>
 #include <string>
+#include <memory>
 
 class connectionHandler;
 class effect;
 
 class effectDispatcher {
 public:
-	effectDispatcher(connectionHandler*);
-	connectionHandler* conn();
-	void addEffect(effect*);
+	effectDispatcher(std::shared_ptr<connectionHandler>);
+	std::shared_ptr<connectionHandler> conn();
+	void addEffect(std::shared_ptr<effect>);
 	void exec();
 
 private:
-	connectionHandler *conn_;
-	std::map<unsigned char,effect*> effects_;
+	std::shared_ptr<connectionHandler> conn_;
+	std::map<unsigned char,std::shared_ptr<effect> > effects_;
 };
 
 #endif

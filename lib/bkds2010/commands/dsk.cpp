@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "dsk.h"
 
 using namespace std;
 
-#define EFF_PP		0x00
-#define EFF_ME1		0x01
-
-dsk::dsk(connectionHandler *conn, effect *eff) : command(conn, eff) {
+dsk::dsk(std::shared_ptr<effect> eff) : command(eff) {
 
 }
 

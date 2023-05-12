@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class eventmem : public command {
 public:
-	eventmem(connectionHandler*, effect*);
+	eventmem(std::shared_ptr<effect>);
 	void exec(unsigned char*);
 };
 

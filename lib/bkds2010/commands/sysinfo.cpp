@@ -3,13 +3,12 @@
 #include <stdlib.h>
 #include <iostream>
 #include <time.h>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "sysinfo.h"
 
 using namespace std;
 
-sysinfo::sysinfo(connectionHandler *conn, effect *eff) : command(conn, eff) {
+sysinfo::sysinfo(std::shared_ptr<effect> eff) : command(eff) {
 
 }
 

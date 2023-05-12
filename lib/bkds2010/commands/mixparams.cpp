@@ -1,15 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "mixparams.h"
 
 using namespace std;
 
-#define EFF_PP		0x00
-#define EFF_ME1		0x01
-
-mixparams::mixparams(connectionHandler *conn, effect *eff) : command(conn, eff) {
+mixparams::mixparams(std::shared_ptr<effect> eff) : command(eff) {
 
     config_[0x00][0] = 0x00;
     config_[0x00][1] = 0x00;

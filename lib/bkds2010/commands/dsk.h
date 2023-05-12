@@ -3,12 +3,11 @@
 
 #include "command.h"
 
-class connectionHandler;
 class effect;
 
 class dsk : public command {
 public:
-    dsk(connectionHandler*, effect*);
+    dsk(std::shared_ptr<effect>);
     void exec(unsigned char*);
 };
 

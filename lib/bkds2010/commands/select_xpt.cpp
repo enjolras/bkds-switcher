@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "select_xpt.h"
 
 using namespace std;
 
-select_xpt::select_xpt(connectionHandler *conn, effect *eff) : command(conn, eff) {
+select_xpt::select_xpt(std::shared_ptr<effect> eff) : command(eff) {
 
 	switch(eff->myId()) {
 		case 0x00:

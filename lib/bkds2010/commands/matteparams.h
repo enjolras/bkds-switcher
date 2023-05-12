@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class matteparams : public command {
 public:
-    matteparams(connectionHandler*, effect*);
+    matteparams(std::shared_ptr<effect>);
     void exec(unsigned char*);
 
 private:

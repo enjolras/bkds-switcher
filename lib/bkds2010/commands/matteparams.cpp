@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 #include <cstring>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "matteparams.h"
 
@@ -37,11 +36,7 @@ using namespace std;
 #define PARAM_MAT2_SAT	0x8c
 #define PARAM_MAT2_HUE	0x8d
 
-#define EFF_PP		0x00
-#define EFF_ME1		0x01
-#define EFF_MATTE	0x18
-
-matteparams::matteparams(connectionHandler *conn, effect *eff) : command(conn, eff) {
+matteparams::matteparams(std::shared_ptr<effect> eff) : command(eff) {
 
 	config_[0x08][0] = 0x00;
 	config_[0x0a][0] = 0x00;

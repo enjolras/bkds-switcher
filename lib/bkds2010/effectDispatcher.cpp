@@ -6,11 +6,11 @@
 
 using namespace std;
 
-effectDispatcher::effectDispatcher(connectionHandler *conn) : conn_(conn) {
+effectDispatcher::effectDispatcher(std::shared_ptr<connectionHandler> conn) : conn_(conn) {
 
 }
 
-void effectDispatcher::addEffect(effect *eff) {
+void effectDispatcher::addEffect(std::shared_ptr<effect> eff) {
 
 	effects_[eff->myId()] = eff;
 
@@ -21,7 +21,7 @@ void effectDispatcher::addEffect(effect *eff) {
 
 void effectDispatcher::exec() {
 
-	map<unsigned char,effect*>::iterator it;
+	map<unsigned char,std::shared_ptr<effect> >::iterator it;
 	unsigned char *nextCommand = conn_->getNextCommand();
 
 	it = effects_.find(nextCommand[1]);
@@ -33,6 +33,6 @@ void effectDispatcher::exec() {
 
 }
 
-connectionHandler* effectDispatcher::conn() {
+std::shared_ptr<connectionHandler> effectDispatcher::conn() {
 	return conn_;
 }

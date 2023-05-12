@@ -33,12 +33,12 @@
 #include "gpiin.h"
 #include "util.h"
 
-void init_effects(effectDispatcher*,connectionHandler*);
+void init_effects(std::shared_ptr<effectDispatcher>,std::shared_ptr<connectionHandler>);
 
 int start() {
 
-	connectionHandler *conn = new connectionHandler();
-	effectDispatcher *effDisp = new effectDispatcher(conn);
+	std::shared_ptr<connectionHandler> conn = std::make_shared<connectionHandler>();
+	std::shared_ptr<effectDispatcher> effDisp = std::make_shared<effectDispatcher>(conn);
 
 	init_effects(effDisp,conn);
 	conn->connect();

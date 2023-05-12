@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "key.h"
 
@@ -34,7 +33,7 @@ using namespace std;
 #define EFF_PP		0x00
 #define EFF_ME1		0x01
 
-key::key(connectionHandler *conn, effect *eff) : command(conn, eff) {
+key::key(std::shared_ptr<effect> eff) : command(eff) {
 
 	switch(eff->myId()) {
 		case 0x00:

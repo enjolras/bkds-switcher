@@ -2,13 +2,12 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "setup_systm.h"
 
 using namespace std;
 
-setup_systm::setup_systm(connectionHandler *conn, effect *eff) : command(conn, eff) {
+setup_systm::setup_systm(std::shared_ptr<effect> eff) : command(eff) {
 
     config_[0x00] = 0x00;
     config_[0x0a] = 0x01;

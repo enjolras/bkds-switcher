@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class gpiin : public command {
 public:
-    gpiin(connectionHandler*, effect*);
+    gpiin(std::shared_ptr<effect>);
     void exec(unsigned char*);
 
 private:

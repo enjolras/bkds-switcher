@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "effect_keyer.h"
 
 using namespace std;
 
-effect_keyer::effect_keyer(connectionHandler *conn, effect *eff) : command(conn, eff) {
+effect_keyer::effect_keyer(std::shared_ptr<effect> eff) : command(eff) {
 
 	config_[0x00][0x00] = 0x00;
 	config_[0x03][0x01] = 0x00;

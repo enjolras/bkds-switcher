@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "wipe.h"
 
@@ -20,10 +19,7 @@ using namespace std;
 #define WIPE_MULTI2	0x23
 #define WIPE_USER	0x41
 
-#define EFF_PP		0x00
-#define EFF_ME1		0x01
-
-wipe::wipe(connectionHandler *conn, effect *eff) : command(conn, eff) {
+wipe::wipe(std::shared_ptr<effect> eff) : command(eff) {
 
     config_[0x00] = 0x00;
     config_[0x01] = 0x01;

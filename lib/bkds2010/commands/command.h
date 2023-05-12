@@ -3,22 +3,20 @@
 
 #include <map>
 #include <string>
+#include <memory>
 
-class connectionHandler;
 class effect;
 
 class command {
 public:
-	command(connectionHandler*,effect*);
+	command(std::shared_ptr<effect>);
 	virtual void exec(unsigned char*) = 0;
 
 protected:
-	connectionHandler* conn();
-	effect* eff();
+	std::shared_ptr<effect> eff();
 
 private:
-	effect *eff_;
-	connectionHandler *conn_;
+	std::shared_ptr<effect> eff_;
 };
 
 #endif

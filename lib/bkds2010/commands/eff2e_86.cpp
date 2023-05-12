@@ -1,18 +1,15 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "eff2e_86.h"
 
 using namespace std;
 
-eff2e_86::eff2e_86(connectionHandler *conn, effect *eff) : command(conn, eff) {
+eff2e_86::eff2e_86(std::shared_ptr<effect> eff) : command(eff) {
 
 }
 
 void eff2e_86::exec(unsigned char *nextCommand) {
-
-	DEBUG_NC
 
 	response tmpResp;
 
@@ -24,7 +21,4 @@ void eff2e_86::exec(unsigned char *nextCommand) {
 	}
 
 	conn()->addResponse(tmpResp);
-
-
-	tmpResp.debugResponse();
 }

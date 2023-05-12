@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "enable.h"
 
 using namespace std;
 
-enable::enable(connectionHandler *conn, effect *eff) : command(conn, eff) {
+enable::enable(std::shared_ptr<effect> eff) : command(eff) {
 
 }
 

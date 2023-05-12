@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class eff25_82 : public command {
 public:
-	eff25_82(connectionHandler*, effect*);
+	eff25_82(std::shared_ptr<effect>);
 	void exec(unsigned char*);
 };
 

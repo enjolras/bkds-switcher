@@ -1,12 +1,11 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "effect_matte.h"
 
 using namespace std;
 
-effect_matte::effect_matte(connectionHandler *conn, effect *eff) : command(conn, eff) {
+effect_matte::effect_matte(std::shared_ptr<effect> eff) : command(eff) {
 
 	config_[0x00] = 0x00;
 	config_[0x01] = 0x00;

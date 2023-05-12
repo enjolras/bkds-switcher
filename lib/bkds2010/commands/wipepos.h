@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class wipepos : public command {
 public:
-    wipepos(connectionHandler*, effect*);
+    wipepos(std::shared_ptr<effect>);
     void exec(unsigned char*);
 
 private:

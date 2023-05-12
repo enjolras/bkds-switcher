@@ -1,16 +1,15 @@
 #include <stdio.h>
 #include <iostream>
-#include "connectionHandler.h"
 #include "../effectDispatcher.h"
 #include "effect.h"
 
 using namespace std;
 
-effect::effect(unsigned char eff, effectDispatcher *effDisp) : eff_(eff),effDisp_(effDisp) {
+effect::effect(unsigned char eff, std::shared_ptr<effectDispatcher> effDisp) : eff_(eff),effDisp_(effDisp) {
 
 }
 
-effectDispatcher* effect:effDisp() {
+std::shared_ptr<effectDispatcher> effect:effDisp() {
 	return effDisp_;
 }
 
@@ -20,7 +19,7 @@ void effect::addCommand(unsigned char cmdId, command *cmd) {
 
 void effect::exec(unsigned char *nextCommand) {
 
-    map<unsigned char,command*>::iterator it;
+    map<unsigned char,std::shared_ptr<command>>::iterator it;
     it = commands_.find(nextCommand[2]);
     if(it != commands_.end()) {
         it->second->exec(nextCommand);
@@ -33,7 +32,7 @@ void effect::exec(unsigned char *nextCommand) {
     }
 }
 
-unsigned char effect::myEffect() {
+unsigned char effect::whoAmI() {
     return eff_;
 }
 

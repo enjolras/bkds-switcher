@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-class connectionHandler;
+
 class effect;
 
 class setup_systm : public command {
 public:
-	setup_systm(connectionHandler*, effect*);
+	setup_systm(std::shared_ptr<effect>);
 	void exec(unsigned char*);
 
 private:
