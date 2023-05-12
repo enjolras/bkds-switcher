@@ -1,8 +1,10 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <memory>
 #include "connectionHandler.h"
 #include "effectDispatcher.h"
+#include "effects/eff00.h"
 #include "ping.h"
 #include "select_xpt.h"
 #include "tbar.h"
@@ -50,6 +52,8 @@ int start() {
 }
 
 void init_effects(effectDispatcher *effDisp, connectionHandler *conn) {
+
+	std::shared_ptr<effect> eff00_ = std::make_shared<eff00>(effDisp); 
 
 	effect *tmpEff;
 	command *tmpCmd;

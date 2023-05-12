@@ -5,18 +5,25 @@
 #include <string>
 
 class connectionHandler;
-class effect;
+class effectDispatcher;
+class command;
 
-class command {
+class effect {
 public:
-	effect(connectionHandler*);
-	virtual void exec(unsigned char*) = 0;
+	effect(unsigned char,effectDispatcher*);
+	void exec(unsigned char*);
+	void addCommand(unsigned char,command*);
+	std::string name();
 
 protected:
-	connectionHandler* conn();
+	effectDispatcher* effDisp();
+	void setName(std::string);
 
 private:
-	connectionHandler *conn_;
+	effectDispatcher *effDisp_;
+	std::string name_;
+	unsigned char eff_;
+	std::map<unsigned char,command*> commands_;
 };
 
 #endif

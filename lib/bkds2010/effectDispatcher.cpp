@@ -33,37 +33,6 @@ void effectDispatcher::exec() {
 
 }
 
-effect::effect(unsigned char eff, connectionHandler *conn) : eff_(eff), conn_(conn) {
-
-}
-
-void effect::addCommand(unsigned char cmdId, command *cmd) {
-	commands_[cmdId] = cmd;
-}
-
-void effect::exec(unsigned char *nextCommand) {
-
-	map<unsigned char,command*>::iterator it;
-	it = commands_.find(nextCommand[2]);
-	if(it != commands_.end()) {
-		it->second->exec(nextCommand);
-	} else {
-		printf("UNKNOWN COMMAND - EFFECT: %02x - COMMAND %02x - DATA: ",nextCommand[1],nextCommand[2]);
-		for(int i=0;i<=nextCommand[0];i++) {
-			printf("%02x ",nextCommand[i]);
-		}
-		printf("\n");
-	}
-}
-
-unsigned char effect::myId() {
-	return eff_;
-}
-
-void effect::setName(std::string name) {
-	name_ = name;
-}
-
-std::string effect::name() {
-	return name_;
+connectionHandler* effectDispatcher::conn() {
+	return conn_;
 }

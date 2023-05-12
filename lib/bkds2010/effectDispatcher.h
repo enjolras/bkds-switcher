@@ -6,27 +6,11 @@
 
 class connectionHandler;
 class effect;
-class command;
-
-class effect {
-public:
-	effect(unsigned char,connectionHandler*);
-	void addCommand(unsigned char,command*);
-	unsigned char myId();
-	void setName(std::string);
-	std::string name();
-	void exec(unsigned char*);
-
-private:
-	unsigned char eff_;
-	std::string name_;
-	std::map<unsigned char,command*> commands_;
-	connectionHandler *conn_;
-};
 
 class effectDispatcher {
 public:
 	effectDispatcher(connectionHandler*);
+	connectionHandler* conn();
 	void addEffect(effect*);
 	void exec();
 
