@@ -1,14 +1,13 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "ping.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-ping::ping(std::shared_ptr<effect> eff) : command(eff) {
+ping::ping(effect* eff) : command(eff) {
 
 }
 
-void ping::exec(unsigned char *nextCommand) {
+void ping::exec(unsigned char*) {
 
 }

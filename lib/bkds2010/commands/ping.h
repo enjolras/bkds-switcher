@@ -3,13 +3,10 @@
 
 #include "command.h"
 
-
-class effect;
-
 class ping : public command {
 public:
-	ping(std::shared_ptr<effect>);
-	void exec(unsigned char*);
+	ping(effect*);
+    void exec(unsigned char*);
 };
 
 #endif

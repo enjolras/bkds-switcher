@@ -3,21 +3,23 @@
 
 #include <map>
 #include <string>
-#include <memory>
 
 class connectionHandler;
 class effect;
+class response;
 
-class effectDispatcher : std::enable_shared_from_this< effectDispatcher > {
+class effectDispatcher {
 public:
-	effectDispatcher(std::shared_ptr<connectionHandler>);
-	std::shared_ptr<connectionHandler> conn();
-	void addEffect(std::shared_ptr<effect>);
+	effectDispatcher(connectionHandler*);
+	connectionHandler* conn();
+	void addEffect(effect*);
 	void exec();
+	void init();
+	void addResponse(response&);
 
 private:
-	std::shared_ptr<connectionHandler> conn_;
-	std::map<unsigned char,std::shared_ptr<effect> > effects_;
+	connectionHandler* conn_;
+	std::map<unsigned char,effect*> effects_;
 };
 
 #endif

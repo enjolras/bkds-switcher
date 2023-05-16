@@ -1,14 +1,12 @@
-#include <stdio.h>
-#include <iostream>
-#include "../effectDispatcher.h"
 #include "command.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-command::command(std::shared_ptr<effect> eff) : eff_(eff) {
-
+command::command(effect* eff) : eff_(eff) {
 }
 
-std::shared_ptr<effect> command::eff() {
+effect* command::eff() {
 	return eff_;
 }

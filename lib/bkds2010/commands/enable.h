@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class enable : public command {
 public:
-	enable(std::shared_ptr<effect>);
+	enable(effect*);
 	void exec(unsigned char*);
 };
 

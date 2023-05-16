@@ -1,12 +1,10 @@
-#include <stdio.h>
-#include <iostream>
 #include "../effects/effect.h"
-#include "../effectDispatcher.h"
+#include "../response.h"
 #include "auto_rate.h"
 
 using namespace std;
 
-auto_rate::auto_rate(std::shared_ptr<effect> eff) : command(eff) {
+auto_rate::auto_rate(effect* eff) : command(eff) {
 
 	switch(eff->whoAmI()) {
 		case 0x00:
@@ -20,7 +18,6 @@ auto_rate::auto_rate(std::shared_ptr<effect> eff) : command(eff) {
 			config_[1] = 0x25;
 			break;
 	}
-
 }
 
 void auto_rate::exec(unsigned char *nextCommand) {
@@ -51,5 +48,5 @@ void auto_rate::exec(unsigned char *nextCommand) {
 		tmpResp.addByte(nextCommand[4]);
 	}
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 }

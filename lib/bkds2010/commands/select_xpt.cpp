@@ -1,13 +1,12 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "select_xpt.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-select_xpt::select_xpt(std::shared_ptr<effect> eff) : command(eff) {
+select_xpt::select_xpt(effect* eff) : command(eff) {
 
-	switch(eff->myId()) {
+	switch(eff->whoAmI()) {
 		case 0x00:
 			config_[0x87] = 0x00;
 			break;
@@ -37,10 +36,10 @@ void select_xpt::exec(unsigned char *nextCommand) {
 		tmpResp.addByte(nextCommand[2] | 0x80);
 	} else {
 		tmpResp.addByte(nextCommand[2]);
-		config_[nextCommand[2] | 0x80] = nextCommand[3] | ((nextCommand[2] | 0x80) == 0x80 && eff()->myId() == 0x01 ? 0x80 : 0x00); // SET HIGH TALLY FOR PGM
+		config_[nextCommand[2] | 0x80] = nextCommand[3] | ((nextCommand[2] | 0x80) == 0x80 && eff()->whoAmI() == 0x01 ? 0x80 : 0x00); // SET HIGH TALLY FOR PGM
 	}
 	tmpResp.addByte(config_[nextCommand[2] | 0x80]);
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 
 }

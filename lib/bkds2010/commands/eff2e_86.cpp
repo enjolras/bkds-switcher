@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "eff2e_86.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-eff2e_86::eff2e_86(std::shared_ptr<effect> eff) : command(eff) {
+eff2e_86::eff2e_86(effect* eff) : command(eff) {
 
 }
 
@@ -20,5 +19,5 @@ void eff2e_86::exec(unsigned char *nextCommand) {
 		tmpResp.addByte(nextCommand[3]) ;
 	}
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 }

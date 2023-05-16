@@ -3,11 +3,9 @@
 
 #include "command.h"
 
-class effect;
-
 class auto_rate : public command {
 public:
-    auto_rate(std::shared_ptr<effect>);
+    auto_rate(effect*);
     void exec(unsigned char*);
 
 private:

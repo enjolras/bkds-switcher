@@ -3,11 +3,9 @@
 
 #include "command.h"
 
-class effect;
-
 class eff01_8a : public command {
 public:
-    eff01_8a(std::shard_ptr<effect>);
+    eff01_8a(effect*);
     void exec(unsigned char*);
 };
 

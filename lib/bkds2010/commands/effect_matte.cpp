@@ -1,16 +1,14 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "effect_matte.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-effect_matte::effect_matte(std::shared_ptr<effect> eff) : command(eff) {
+effect_matte::effect_matte(effect* eff) : command(eff) {
 
 	config_[0x00] = 0x00;
 	config_[0x01] = 0x00;
 	config_[0x02] = 0x00;
-
 }
 
 void effect_matte::exec(unsigned char *nextCommand) {
@@ -25,5 +23,5 @@ void effect_matte::exec(unsigned char *nextCommand) {
 	}
 	tmpResp.addByte(config_[nextCommand[3]]);
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 }

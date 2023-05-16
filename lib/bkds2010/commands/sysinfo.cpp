@@ -1,14 +1,12 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <iostream>
-#include <time.h>
-#include "effectDispatcher.h"
+#include <cstdio>
+#include <ctime>
+#include "../response.h"
+#include "../effects/effect.h"
 #include "sysinfo.h"
 
 using namespace std;
 
-sysinfo::sysinfo(std::shared_ptr<effect> eff) : command(eff) {
+sysinfo::sysinfo(effect* eff) : command(eff) {
 
 }
 
@@ -57,7 +55,7 @@ void sysinfo::exec(unsigned char *nextCommand) {
 			break;
 	}
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 
 	/* SYSTEM:
 		0x00	D2 525

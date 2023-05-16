@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class wipeparams : public command {
 public:
-    wipeparams(std::shared_ptr<effect>);
+    wipeparams(effect*);
     void exec(unsigned char*);
 
 private:

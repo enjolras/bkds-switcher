@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class sysinfo : public command {
 public:
-	sysinfo(std::shared_ptr<effect>);
+	sysinfo(effect*);
 	void exec(unsigned char*);
 };
 

@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class gpiin : public command {
 public:
-    gpiin(std::shared_ptr<effect>);
+    gpiin(effect*);
     void exec(unsigned char*);
 
 private:

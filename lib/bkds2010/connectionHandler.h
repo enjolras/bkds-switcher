@@ -2,11 +2,9 @@
 #define CONNECTION_HANDLER_H
 
 #include <queue>
+#include <deque>
 #include <string>
-
-#define DEBUG_NC		for(int i=0;i<=nextCommand[0];i++) {printf("%02x ",nextCommand[i]);}printf("\n");
-
-class response;
+#include "response.h"
 
 class connectionHandler {
 public:

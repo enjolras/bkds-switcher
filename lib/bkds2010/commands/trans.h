@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class trans : public command {
 public:
-    trans(std::shared_ptr<effect>);
+    trans(effect*);
     void exec(unsigned char*);
 
 private:

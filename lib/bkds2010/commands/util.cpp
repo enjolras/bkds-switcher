@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "util.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-util::util(std::shared_ptr<effect> eff) : command(eff) {
+util::util(effect* eff) : command(eff) {
 
 	data = 0x58;
 
@@ -22,6 +21,6 @@ void util::exec(unsigned char *nextCommand) {
 	}
 	tmpResp.addByte(data);
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 
 }

@@ -3,11 +3,9 @@
 
 #include "command.h"
 
-class effect;
-
 class dsk : public command {
 public:
-    dsk(std::shared_ptr<effect>);
+    dsk(effect*);
     void exec(unsigned char*);
 };
 

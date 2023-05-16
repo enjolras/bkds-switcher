@@ -3,11 +3,9 @@
 
 #include "command.h"
 
-class effect;
-
 class eff00_13 : public command {
 public:
-    eff00_13(std::shared_ptr<effect>);
+    eff00_13(effect*);
     void exec(unsigned char*);
 };
 

@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class setup_systm : public command {
 public:
-	setup_systm(std::shared_ptr<effect>);
+	setup_systm(effect*);
 	void exec(unsigned char*);
 
 private:

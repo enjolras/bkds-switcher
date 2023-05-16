@@ -1,11 +1,11 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "wipepos.h"
+#include "../response.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-wipepos::wipepos(std::shared_ptr<effect> eff) : command(eff) {
+wipepos::wipepos(effect* eff) : command(eff) {
 
     config_[0] = 0x80;
     config_[1] = 0x00;
@@ -31,6 +31,6 @@ void wipepos::exec(unsigned char *nextCommand) {
 	tmpResp.addByte(config_[2]);
 	tmpResp.addByte(config_[3]);
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 
 }

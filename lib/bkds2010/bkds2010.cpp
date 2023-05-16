@@ -1,20 +1,24 @@
-#include <stdio.h>
-#include <stdbool.h>
-#include <stdlib.h>
-#include <memory>
+#include <cstdio>
+#include <cstdbool>
+#include <cstdlib>
+#include <unistd.h>
+#include <thread>
 #include "connectionHandler.h"
 #include "effectDispatcher.h"
 
-int start() {
+int bkds2010_init() {
 
-	std::shared_ptr<connectionHandler> conn = std::make_shared<connectionHandler>();
-	std::shared_ptr<effectDispatcher> effDisp = std::make_shared<effectDispatcher>(conn);
+	connectionHandler* conn = new connectionHandler();
+	effectDispatcher* effDisp = new effectDispatcher(conn);
 
+	effDisp->init();
 	conn->connect();
 
+	std::thread effDispThr(&effectDispatcher::exec,effDisp);
+
 	while(true) {
-		effDisp->exec();
 		conn->commitResponses();
+		usleep(100);
 	}
 
 	return 0;

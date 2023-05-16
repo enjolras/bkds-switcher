@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class mixparams : public command {
 public:
-    mixparams(std::shared_ptr<effect>);
+    mixparams(effect*);
     void exec(unsigned char*);
 
 private:

@@ -25,18 +25,30 @@ SET (bkds2010_lib
 	commands/select_xpt.cpp
 	commands/setup_systm.cpp
 	commands/sysinfo.cpp
+	commands/util.cpp
 	commands/tbar.cpp
 	commands/trans.cpp
-	commands/util.cpp
 	commands/wipe.cpp
-	commands/wipepos.cpp
 	commands/wipeparams.cpp
+	commands/wipepos.cpp
+	effects/eff00.cpp
+	effects/eff01.cpp
+	effects/eff10.cpp
+	effects/eff14.cpp
+	effects/eff15.cpp
+	effects/eff18.cpp
+	effects/eff1e.cpp
+	effects/eff1f.cpp
+	effects/eff20.cpp
+	effects/eff21.cpp
+	effects/eff25.cpp
+	effects/eff2e.cpp
+	effects/eff_aux.cpp
+	effects/effff.cpp
+	effects/effect.cpp
 	)
 
-add_subdirectory(commands)
-add_subdirectory(effects)
-
-add_library(bkds2010 SHARED ${bkds2010_lib} ${bkds2010_lib_commands} ${bkds2010_lib_effects})
+add_library(bkds2010 SHARED ${bkds2010_lib})
 
 set_target_properties(
 	bkds2010

@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class effect_matte : public command {
 public:
-	effect_matte(std::shared_ptr<effect>);
+	effect_matte(effect*);
 	void exec(unsigned char*);
 
 private:

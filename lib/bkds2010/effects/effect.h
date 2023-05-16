@@ -3,28 +3,27 @@
 
 #include <map>
 #include <string>
-#include <memory>
 
-class effectDispatcher;
 class command;
+class effectDispatcher;
+class response;
 
 class effect {
 public:
-	effect(unsigned char,std::shared_ptr<effectDispatcher> const&);
+	effect(unsigned char,effectDispatcher*);
 	void exec(unsigned char*);
-	void addCommand(unsigned char,std::shared_ptr<command>);
+	void addCommand(unsigned char,command*);
 	std::string name();
 	unsigned char whoAmI();
-
-protected:
-	std::shared_ptr<effectDispatcher> effDisp();
+	void addResponse(response&);
 	void setName(std::string);
+	effectDispatcher* effDisp();
 
 private:
-	std::shared_ptr<effectDispatcher> effDisp_;
+	effectDispatcher* effDisp_;
 	std::string name_;
 	unsigned char eff_;
-	std::map<unsigned char,std::shared_ptr<command> > commands_;
+	std::map<unsigned char,command*> commands_;
 };
 
 #endif

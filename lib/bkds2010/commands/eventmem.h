@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class eventmem : public command {
 public:
-	eventmem(std::shared_ptr<effect>);
+	eventmem(effect*);
 	void exec(unsigned char*);
 };
 

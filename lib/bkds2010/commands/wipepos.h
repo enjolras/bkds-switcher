@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class wipepos : public command {
 public:
-    wipepos(std::shared_ptr<effect>);
+    wipepos(effect*);
     void exec(unsigned char*);
 
 private:

@@ -1,13 +1,10 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "setup_systm.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-setup_systm::setup_systm(std::shared_ptr<effect> eff) : command(eff) {
+setup_systm::setup_systm(effect* eff) : command(eff) {
 
     config_[0x00] = 0x00;
     config_[0x0a] = 0x01;
@@ -62,6 +59,6 @@ void setup_systm::exec(unsigned char *nextCommand) {
 			return;
 	}
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 
 }

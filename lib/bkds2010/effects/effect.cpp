@@ -1,30 +1,36 @@
-#include <stdio.h>
-#include <iostream>
+#include <cstdio>
 #include "../effectDispatcher.h"
+#include "../commands/command.h"
 #include "effect.h"
 
 using namespace std;
 
-effect::effect(unsigned char eff, std::shared_ptr<effectDispatcher> const& effDisp) : eff_(eff),effDisp_(effDisp) {
+effect::effect(unsigned char eff, effectDispatcher* effDisp) : eff_(eff),effDisp_(effDisp) {
 
 }
 
-std::shared_ptr<effectDispatcher> effect:effDisp() {
+effectDispatcher* effect::effDisp() {
 	return effDisp_;
 }
 
-void effect::addCommand(unsigned char cmdId, command *cmd) {
+void effect::addCommand(unsigned char cmdId, command* cmd) {
+
+	printf("  ADDED COMMAND %02x TO EFFECT %02x\n",cmdId,eff_);
     commands_[cmdId] = cmd;
+}
+
+void effect::addResponse(response &resp) {
+	effDisp()->addResponse(resp);
 }
 
 void effect::exec(unsigned char *nextCommand) {
 
-    map<unsigned char,std::shared_ptr<command>>::iterator it;
+    map<unsigned char,command*>::iterator it;
     it = commands_.find(nextCommand[2]);
     if(it != commands_.end()) {
         it->second->exec(nextCommand);
     } else {
-        printf("UNKNOWN COMMAND - EFFECT: %02x - COMMAND %02x - DATA: ",nextCommand[1],nextCommand[2]);
+        printf("EFFECT %02x (%s) - UNKNOWN COMMAND %02x - DATA: ",whoAmI(),name().c_str(),nextCommand[2]);
         for(int i=0;i<=nextCommand[0];i++) {
             printf("%02x ",nextCommand[i]);
         }

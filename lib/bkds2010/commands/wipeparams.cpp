@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "wipeparams.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-wipeparams::wipeparams(std::shared_ptr<effect> eff) : command(eff) {
+wipeparams::wipeparams(effect* eff) : command(eff) {
 
     config_[0x00][0] = 0x00;
     config_[0x00][1] = 0x00;
@@ -42,6 +41,6 @@ void wipeparams::exec(unsigned char *nextCommand) {
 	tmpResp.addByte(config_[nextCommand[3]][0]);
 	tmpResp.addByte(config_[nextCommand[3]][1]);
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 
 }

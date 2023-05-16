@@ -1,41 +1,12 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "key.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-#define KEY1_FILL	0x00
-#define KEY1_SOURCE 0x01
-#define KEY1_TYPE	0x05
-#define KEY1_EDGE	0x06
-#define KEY1_TRANS	0x10
-#define KEY1_INV	0x11
-#define KEY1_MAIN	0x12
-#define KEY1_SUB	0x13
-#define KEY1_15		0x15
-#define KEY1_FINE	0x90
-#define KEY1_DEPTH	0x91
-#define KEY1_PROC	0x93
-#define KEY2_FILL	0x20
-#define KEY2_SOURCE 0x21
-#define KEY2_TYPE	0x25
-#define KEY2_EDGE	0x26
-#define KEY2_TRANS	0x30
-#define KEY2_INV	0x31
-#define KEY2_MAIN	0x32
-#define KEY2_SUB	0x33
-#define KEY2_35		0x35
-#define KEY2_FINE	0xb0
-#define KEY2_DEPTH	0xb1
-#define KEY2_PROC	0xb3
+key::key(effect* eff) : command(eff) {
 
-#define EFF_PP		0x00
-#define EFF_ME1		0x01
-
-key::key(std::shared_ptr<effect> eff) : command(eff) {
-
-	switch(eff->myId()) {
+	switch(eff->whoAmI()) {
 		case 0x00:
 		    config_[0x05] = 0x01;
    			config_[0x25] = 0x01;
@@ -88,28 +59,6 @@ void key::exec(unsigned char *nextCommand) {
 			break;
 		case KEY1_TRANS:
 		case KEY2_TRANS:
-/*		case 0x02:
-		case 0x03:
-		case 0x14:
-		case 0x16:
-		case 0x17:
-		case 0x18:
-		case 0x19:
-		case 0x92:
-		case 0x96:
-		case 0x22:
-		case 0x23:
-		case 0x34:
-		case 0x36:
-		case 0x37:
-		case 0x38:
-		case 0x39:
-		case 0xb2:
-		case 0xb6:*/
-/*		case KEY1_11:
-		case KEY1_15:
-		case KEY2_31:
-		case KEY2_35:*/
 			tmpResp.addByte(nextCommand[1]);
 			tmpResp.addByte(nextCommand[2] | 0x80);
 			tmpResp.addByte(nextCommand[3]);
@@ -152,27 +101,12 @@ void key::exec(unsigned char *nextCommand) {
 			break;
 //		case 0x15:		// KEY1 OVER
 		case 0x35:		// KEY2 OVER
-//		case 0x03:		// UNK
-//		case 0x23:		// UNK
-//		case 0x92:		// UNK
-//		case 0xb2:		// UNK
-//		case 0x96:		// KEY1 EDGE?
-//		case 0xb6:		// KEY2 EDGE?
 			tmpResp.addByte(nextCommand[1]);
 			tmpResp.addByte(0xda);
 			tmpResp.addByte(nextCommand[3]);
 			break;
 		default:
-/*			printf("UNKNOWN KEY COMMAND %02x DATA ",nextCommand[3]);
-			for(int i=0;i<=nextCommand[0];i++) {
-				printf("%02x ",nextCommand[i]);
-			}
-			printf("\n");*/
 			return;
-			tmpResp.addByte(nextCommand[1]);
-			tmpResp.addByte(0xda);
-			tmpResp.addByte(nextCommand[3]);
-			break;
 	}
 
 	switch(nextCommand[3]) {
@@ -182,5 +116,5 @@ void key::exec(unsigned char *nextCommand) {
 			break;
 	}
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 }

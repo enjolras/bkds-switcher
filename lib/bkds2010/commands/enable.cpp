@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "enable.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-enable::enable(std::shared_ptr<effect> eff) : command(eff) {
+enable::enable(effect* eff) : command(eff) {
 
 }
 
@@ -17,5 +16,5 @@ void enable::exec(unsigned char *nextCommand) {
 	tmpResp.addByte(nextCommand[2] | 0x80);
 	tmpResp.addByte((nextCommand[2] < 0x80 ? 0x08 : nextCommand[3]));
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 }

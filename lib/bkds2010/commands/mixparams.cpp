@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "mixparams.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-mixparams::mixparams(std::shared_ptr<effect> eff) : command(eff) {
+mixparams::mixparams(effect* eff) : command(eff) {
 
     config_[0x00][0] = 0x00;
     config_[0x00][1] = 0x00;
@@ -30,6 +29,6 @@ void mixparams::exec(unsigned char *nextCommand) {
 	tmpResp.addByte(config_[nextCommand[3]][0]);
 	tmpResp.addByte(config_[nextCommand[3]][1]);
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 
 }

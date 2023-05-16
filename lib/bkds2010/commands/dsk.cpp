@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "dsk.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-dsk::dsk(std::shared_ptr<effect> eff) : command(eff) {
+dsk::dsk(effect* eff) : command(eff) {
 
 }
 
@@ -26,5 +25,5 @@ void dsk::exec(unsigned char *nextCommand) {
 			break;
 	}
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 }

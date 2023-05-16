@@ -1,15 +1,11 @@
-#include <stdio.h>
-#include <iostream>
 #include <cstring>
-#include "effectDispatcher.h"
+#include "../response.h"
+#include "../effects/effect.h"
 #include "gpiin.h"
 
 using namespace std;
 
-#define EFF_PP		0x00
-#define EFF_ME1		0x01
-
-gpiin::gpiin(std::shared_ptr<effect> eff) : command(eff) {
+gpiin::gpiin(effect* eff) : command(eff) {
 
 	memset(status00,0x00,sizeof(status00));
 	status00[0x07][0] = 0x20;
@@ -20,13 +16,10 @@ gpiin::gpiin(std::shared_ptr<effect> eff) : command(eff) {
 	memset(status03,0xff,sizeof(status03));
 
 	memset(status08,0x00,sizeof(status08));
-
 }
 
 void gpiin::exec(unsigned char *nextCommand) {
 
-	DEBUG_NC
-	
 	response tmpResp;
 
 	tmpResp.addByte(nextCommand[1]);
@@ -71,6 +64,6 @@ void gpiin::exec(unsigned char *nextCommand) {
 			break;
 	}
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 
 }

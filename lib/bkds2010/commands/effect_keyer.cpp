@@ -1,17 +1,15 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "effect_keyer.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-effect_keyer::effect_keyer(std::shared_ptr<effect> eff) : command(eff) {
+effect_keyer::effect_keyer(effect* eff) : command(eff) {
 
 	config_[0x00][0x00] = 0x00;
 	config_[0x03][0x01] = 0x00;
 	config_[0x03][0x11] = 0x00;
 	config_[0x03][0x12] = 0x00;
-
 }
 
 void effect_keyer::exec(unsigned char *nextCommand) {
@@ -36,11 +34,9 @@ void effect_keyer::exec(unsigned char *nextCommand) {
 			tmpResp.addByte(config_[0x03][nextCommand[4]]);
 			break;
 		default:
-			DEBUG_NC
 			tmpResp.addByte(nextCommand[4]);
-			tmpResp.debugResponse();
 			break;
 	}
 			
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 }

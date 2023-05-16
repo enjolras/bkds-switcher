@@ -1,12 +1,13 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "eff01_a1.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-eff01_a1::eff01_a1(std::shared_ptr<effect> eff) : command(eff) {
+eff01_a1::eff01_a1(effect* eff) : command(eff) {
 
+	config_[0] = 0x00;
+	config_[1] = 0x00;
 }
 
 void eff01_a1::exec(unsigned char *nextCommand) {
@@ -22,5 +23,5 @@ void eff01_a1::exec(unsigned char *nextCommand) {
 	tmpResp.addByte(config_[0]);
 	tmpResp.addByte(config_[1]);
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 }

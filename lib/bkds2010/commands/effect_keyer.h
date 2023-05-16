@@ -3,12 +3,9 @@
 
 #include "command.h"
 
-
-class effect;
-
 class effect_keyer : public command {
 public:
-	effect_keyer(std::shared_ptr<effect>);
+	effect_keyer(effect*);
 	void exec(unsigned char*);
 
 private:

@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "trans.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-trans::trans(std::shared_ptr<effect> eff) : command(eff) {
+trans::trans(effect* eff) : command(eff) {
 
     config_[0x90] = 0x01;
     config_[0x91] = 0x02;
@@ -23,7 +22,7 @@ void trans::exec(unsigned char *nextCommand) {
 	}
 	tmpResp.addByte(config_[nextCommand[2] | 0x80]);
 
-	conn()->addResponse(tmpResp);
+	eff()->addResponse(tmpResp);
 
     // TRANS TYPE MIX CAN HAVE DIFFERENT VALUES DEPENDING ON MIX TYPE:
     // 02 - REGULAR MIX

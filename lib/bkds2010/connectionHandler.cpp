@@ -12,12 +12,11 @@
 #include <sstream>
 
 #include "connectionHandler.h"
-#include "response.h"
 
 using namespace std;
 
 connectionHandler::connectionHandler() {
-	connect();
+
 }
 
 int connectionHandler::setInterfaceAttribs(int speed, int parity) {

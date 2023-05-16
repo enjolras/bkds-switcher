@@ -1,11 +1,10 @@
-#include <stdio.h>
-#include <iostream>
-#include "effectDispatcher.h"
 #include "eventmem.h"
+#include "../response.h"
+#include "../effects/effect.h"
 
 using namespace std;
 
-eventmem::eventmem(std::shared_ptr<effect> eff) : command(eff) {
+eventmem::eventmem(effect* eff) : command(eff) {
 
 }
 
