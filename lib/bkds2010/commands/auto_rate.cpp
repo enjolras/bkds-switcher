@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <iostream>
-#include "effect.h"
+#include "../effects/effect.h"
 #include "../effectDispatcher.h"
 #include "auto_rate.h"
 
@@ -8,7 +8,7 @@ using namespace std;
 
 auto_rate::auto_rate(std::shared_ptr<effect> eff) : command(eff) {
 
-	switch(eff->myId()) {
+	switch(eff->whoAmI()) {
 		case 0x00:
 		    config_[0] = 0x00;
 		    config_[1] = 0x25;

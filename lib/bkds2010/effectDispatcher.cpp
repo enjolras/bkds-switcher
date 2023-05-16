@@ -2,20 +2,24 @@
 #include <iostream>
 #include "connectionHandler.h"
 #include "effectDispatcher.h"
-#include "command.h"
+#include "effects/eff_defines.h"
+#include "effects/eff00.h"
+#include "commands/command.h"
 
 using namespace std;
 
 effectDispatcher::effectDispatcher(std::shared_ptr<connectionHandler> conn) : conn_(conn) {
 
+	addEffect((std::shared_ptr<effect>)std::make_shared<eff00>((unsigned char)EFF_PPROW,shared_from_this()));	// PPROW
+
 }
 
 void effectDispatcher::addEffect(std::shared_ptr<effect> eff) {
 
-	effects_[eff->myId()] = eff;
+	effects_[eff->whoAmI()] = eff;
 
 	cout << "EFFECT " << eff->name();
-	printf(" (%02x) ",eff->myId());
+	printf(" (%02x) ",eff->whoAmI());
 	cout << "ADDED TO DISPATCHER" << endl;
 }
 

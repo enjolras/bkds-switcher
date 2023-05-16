@@ -5,13 +5,12 @@
 #include <string>
 #include <memory>
 
-class connectionHandler;
 class effectDispatcher;
 class command;
 
 class effect {
 public:
-	effect(unsigned char,std::shared_ptr<effectDispatcher>);
+	effect(unsigned char,std::shared_ptr<effectDispatcher> const&);
 	void exec(unsigned char*);
 	void addCommand(unsigned char,std::shared_ptr<command>);
 	std::string name();

@@ -5,7 +5,7 @@
 
 using namespace std;
 
-effect::effect(unsigned char eff, std::shared_ptr<effectDispatcher> effDisp) : eff_(eff),effDisp_(effDisp) {
+effect::effect(unsigned char eff, std::shared_ptr<effectDispatcher> const& effDisp) : eff_(eff),effDisp_(effDisp) {
 
 }
 

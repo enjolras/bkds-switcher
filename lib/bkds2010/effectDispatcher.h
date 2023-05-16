@@ -8,7 +8,7 @@
 class connectionHandler;
 class effect;
 
-class effectDispatcher {
+class effectDispatcher : std::enable_shared_from_this< effectDispatcher > {
 public:
 	effectDispatcher(std::shared_ptr<connectionHandler>);
 	std::shared_ptr<connectionHandler> conn();

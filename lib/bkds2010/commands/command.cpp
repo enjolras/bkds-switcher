@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <iostream>
-#include "effectDispatcher.h"
+#include "../effectDispatcher.h"
 #include "command.h"
 
 using namespace std;
