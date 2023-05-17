@@ -34,8 +34,7 @@ SET (bkds2010_lib
 	effects/eff00.cpp
 	effects/eff01.cpp
 	effects/eff10.cpp
-	effects/eff14.cpp
-	effects/eff15.cpp
+	effects/eff_framemem.cpp
 	effects/eff18.cpp
 	effects/eff1e.cpp
 	effects/eff1f.cpp

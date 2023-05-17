@@ -7,8 +7,7 @@
 #include "effects/eff00.h"
 #include "effects/eff01.h"
 #include "effects/eff10.h"
-#include "effects/eff14.h"
-#include "effects/eff15.h"
+#include "effects/eff_framemem.h"
 #include "effects/eff18.h"
 #include "effects/eff1e.h"
 #include "effects/eff1f.h"
@@ -30,8 +29,8 @@ void effectDispatcher::init() {
 	addEffect((effect*)new eff00((unsigned char)EFF_PPROW,this));	// PPROW
 	addEffect((effect*)new eff01((unsigned char)EFF_ME1ROW,this));	// ME1ROW
 	addEffect((effect*)new eff10((unsigned char)EFF_CHRKEY,this));	// CHRKEY
-	addEffect((effect*)new eff14((unsigned char)EFF_FRMEM1,this));	// FRMEM1
-	addEffect((effect*)new eff15((unsigned char)EFF_FRMEM2,this));	// FRMEM2 
+	addEffect((effect*)new eff_framemem((unsigned char)EFF_FRMEM1,this));	// FRMEM1
+	addEffect((effect*)new eff_framemem((unsigned char)EFF_FRMEM2,this));	// FRMEM2 
 	addEffect((effect*)new eff18((unsigned char)EFF_MATTE,this));	// MATTE
 	addEffect((effect*)new eff1e((unsigned char)EFF_VPROC,this));	// VPROC
 	addEffect((effect*)new eff1f((unsigned char)EFF_CCR,this));		// CCR
