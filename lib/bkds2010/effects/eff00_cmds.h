@@ -9,6 +9,8 @@
 #define WR_KEY_ON		0xda
 #define RD_AUTO_RATE	0x18
 #define WR_AUTO_RATE	0x98
+#define RD_FINEKEY		0x2c
+#define WR_FINEKEY		0xac
 #define WR_DSK			0x90	// HAVE TO CHECK WHAT IT DOES
 #define WR_DSK_OFF		0x93	// SAME
 #define WR_DSK_ON		0xd3	// SAME

@@ -1,6 +1,5 @@
 #include "wipepos.h"
 #include "../response.h"
-#include "../response.h"
 #include "../effects/effect.h"
 
 using namespace std;

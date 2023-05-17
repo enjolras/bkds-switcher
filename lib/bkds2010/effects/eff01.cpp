@@ -11,6 +11,7 @@
 #include "../commands/eff01_a1.h"
 #include "../commands/eff01_9c.h"
 #include "../commands/eff01_8a.h"
+#include "../commands/finekey.h"
 #include "../commands/wipe.h"
 #include "../commands/wipepos.h"
 #include "../commands/wipeparams.h"
@@ -46,6 +47,10 @@ eff01::eff01(unsigned char eff,effectDispatcher* effDisp) : effect(eff,effDisp) 
     tmpCmd = (command*)new auto_rate(this);
     addCommand(0x18,tmpCmd);
     addCommand(0x98,tmpCmd);
+
+	tmpCmd = (command*)new finekey(this);
+	addCommand(0x2c,tmpCmd);
+	addCommand(0xac,tmpCmd);
 
     tmpCmd = (command*)new eff01_a1(this);
     addCommand(0x21,tmpCmd);

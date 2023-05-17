@@ -7,6 +7,7 @@
 #include "../commands/auto_rate.h"
 #include "../commands/dsk.h"
 #include "../commands/matteparams.h"
+#include "../commands/finekey.h"
 
 eff00::eff00(unsigned char eff,effectDispatcher* effDisp) : effect(eff,effDisp) {
 
@@ -29,6 +30,10 @@ eff00::eff00(unsigned char eff,effectDispatcher* effDisp) : effect(eff,effDisp) 
     tmpCmd = (command*)new auto_rate(this);
     addCommand(0x18,tmpCmd);
     addCommand(0x98,tmpCmd);
+
+	tmpCmd = (command*)new finekey(this);
+	addCommand(0x2c,tmpCmd);
+	addCommand(0xac,tmpCmd);
 
     tmpCmd = (command*)new dsk(this);
     addCommand(0x90,tmpCmd);

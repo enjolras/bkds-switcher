@@ -17,6 +17,7 @@ SET (bkds2010_lib
 	commands/effect_matte.cpp
 	commands/enable.cpp
 	commands/eventmem.cpp
+	commands/finekey.cpp
 	commands/gpiin.cpp
 	commands/key.cpp
 	commands/matteparams.cpp
