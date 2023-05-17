@@ -7,7 +7,7 @@
 #include "../commands/auto_rate.h"
 #include "../commands/dsk.h"
 #include "../commands/matteparams.h"
-#include "../commands/finekey.h"
+#include "../commands/keyparams.h"
 
 eff00::eff00(unsigned char eff,effectDispatcher* effDisp) : effect(eff,effDisp) {
 

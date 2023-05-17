@@ -1,11 +1,11 @@
-#ifndef FINEKEY_H
-#define FINEKEY_H
+#ifndef KEYPARAMS_H
+#define KEYPARAMS_H
 
 #include "command.h"
 
-class finekey : public command {
+class keyparams : public command {
 public:
-    finekey(effect*);
+    keyparams(effect*);
     void exec(unsigned char*);
 
 private:

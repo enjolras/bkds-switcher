@@ -11,7 +11,7 @@
 #include "../commands/eff01_a1.h"
 #include "../commands/eff01_9c.h"
 #include "../commands/eff01_8a.h"
-#include "../commands/finekey.h"
+#include "../commands/keyparams.h"
 #include "../commands/wipe.h"
 #include "../commands/wipepos.h"
 #include "../commands/wipeparams.h"
