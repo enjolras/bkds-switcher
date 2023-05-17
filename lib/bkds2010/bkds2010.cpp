@@ -5,21 +5,24 @@
 #include <thread>
 #include "connectionHandler.h"
 #include "effectDispatcher.h"
+#include "bkds2010.h"
 
-int bkds2010_init() {
+bkds2010::bkds2010() {
 
-	connectionHandler* conn = new connectionHandler();
-	effectDispatcher* effDisp = new effectDispatcher(conn);
+	conn_ = new connectionHandler();
+	effDisp_ = new effectDispatcher(conn_);
 
-	effDisp->init();
-	conn->connect();
+	effDisp_->init();
+	conn_->connect();
+}
 
-	std::thread effDispThr(&effectDispatcher::exec,effDisp);
+void bkds2010::run() {
 
-	while(true) {
-		conn->commitResponses();
-		usleep(100);
-	}
+	std::thread effDispThr(&effectDispatcher::exec,effDisp_);
+	effDispThr.detach();
 
-	return 0;
+}
+
+void bkds2010::execEvent() {
+
 }

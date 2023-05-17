@@ -74,6 +74,7 @@ void effectDispatcher::exec() {
 		} else {
 			printf("UNKNOWN EFFECT %02x\n",nextCommand[1]);
 		}
+		conn()->commitResponses();
 		usleep(100);
 	}
 }
