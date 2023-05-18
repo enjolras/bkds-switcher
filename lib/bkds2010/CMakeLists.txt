@@ -3,6 +3,7 @@ SET (bkds2010_lib
 	connectionHandler.cpp
 	effectDispatcher.cpp
 	response.cpp
+	commands/knobs.cpp
 	commands/auto_rate.cpp
 	commands/command.cpp
 	commands/dsk.cpp
