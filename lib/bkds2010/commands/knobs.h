@@ -4,7 +4,8 @@
 class knobs {
 public:
 	knobs();
-	unsigned char type1(unsigned char, unsigned char);
-}
+	void type1(unsigned char [2], unsigned char);
+	void type2(unsigned char [2], unsigned char);
+};
 
 #endif

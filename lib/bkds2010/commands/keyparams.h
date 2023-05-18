@@ -3,6 +3,8 @@
 
 #include "command.h"
 
+class knobs;
+
 class keyparams : public command {
 public:
     keyparams(effect*);
@@ -10,6 +12,7 @@ public:
 
 private:
 	unsigned char config_[256][2];
+	knobs* knobs_;
 };
 
 #endif

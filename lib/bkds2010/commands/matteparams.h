@@ -26,12 +26,20 @@
 #define PARAM_BKGD_MAT2_SAT 0x04
 #define PARAM_BKGD_MAT2_HUE 0x05
 #define PARAM_COLOR_MIX 0x08
+#define PARAM_MAT1_LUM_KNOB 0x80
 #define PARAM_MAT1_LUM  0x88
+#define PARAM_MAT1_SAT_KNOB 0x81
 #define PARAM_MAT1_SAT  0x89
+#define PARAM_MAT1_HUE_KNOB 0x82
 #define PARAM_MAT1_HUE  0x8a
+#define PARAM_MAT2_LUM_KNOB 0x83
 #define PARAM_MAT2_LUM  0x8b
+#define PARAM_MAT2_SAT_KNOB 0x84
 #define PARAM_MAT2_SAT  0x8c
+#define PARAM_MAT2_HUE_KNOB 0x85
 #define PARAM_MAT2_HUE  0x8d
+
+class knobs;
 
 class matteparams : public command {
 public:
@@ -40,6 +48,7 @@ public:
 
 private:
 	unsigned char config_[256][2];
+	knobs* knobs_;
 };
 
 #endif

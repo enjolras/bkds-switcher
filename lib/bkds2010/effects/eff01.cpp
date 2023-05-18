@@ -51,6 +51,7 @@ eff01::eff01(unsigned char eff,effectDispatcher* effDisp) : effect(eff,effDisp) 
 	tmpCmd = (command*)new keyparams(this);
 	addCommand(0x2c,tmpCmd);
 	addCommand(0xac,tmpCmd);
+	addCommand(0xa4,tmpCmd);
 
     tmpCmd = (command*)new eff01_a1(this);
     addCommand(0x21,tmpCmd);
