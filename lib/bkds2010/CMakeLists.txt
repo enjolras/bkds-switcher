@@ -21,6 +21,7 @@ SET (bkds2010_lib
 	commands/gpiin.cpp
 	commands/key.cpp
 	commands/matteparams.cpp
+	commands/matte_colormix.cpp
 	commands/mixparams.cpp
 	commands/ping.cpp
 	commands/select_xpt.cpp
