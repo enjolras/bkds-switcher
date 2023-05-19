@@ -62,6 +62,10 @@ void effectDispatcher::addResponse(response &resp) {
 	conn()->addResponse(resp);
 }
 
+void effectDispatcher::addEvent(event &ev) {
+	conn()->addEvent(ev);
+}
+
 void effectDispatcher::exec() {
 	while(true) {
 		map<unsigned char,effect*>::iterator it;

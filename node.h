@@ -5,15 +5,18 @@
 #define SENDER_BKDSOBS		0x01
 
 class event;
+class eventQueue;
 
 class node {
 public:
-	node();
+	node(eventQueue*);
 	void setNodeId(unsigned char);
 	unsigned char nodeId();
-	virtual void execEvent(event*) = 0;
+	eventQueue* eventQ();
+	virtual void execEvent(event&);
 
 private:
+	eventQueue* eventQueue_;
 	unsigned char nodeId_;
 };
 

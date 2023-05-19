@@ -23,6 +23,10 @@ void effect::addResponse(response &resp) {
 	effDisp()->addResponse(resp);
 }
 
+void effect::addEvent(event &ev) {
+	effDisp()->addEvent(ev);
+}
+
 void effect::exec(unsigned char *nextCommand) {
 
     map<unsigned char,command*>::iterator it;

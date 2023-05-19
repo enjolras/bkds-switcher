@@ -12,10 +12,11 @@
 #include <sstream>
 
 #include "connectionHandler.h"
+#include "../../eventQueue.h"
 
 using namespace std;
 
-connectionHandler::connectionHandler() {
+connectionHandler::connectionHandler(eventQueue *ev) : eventQ_(ev) {
 
 }
 
@@ -152,9 +153,11 @@ unsigned char* connectionHandler::getNextCommand() {
 }
 
 void connectionHandler::addResponse(response &resp) {
-
 	responses.push(resp);
+}
 
+void connectionHandler::addEvent(event &ev) {
+	eventQ_->addEvent(ev);
 }
 
 void connectionHandler::commitResponses() {

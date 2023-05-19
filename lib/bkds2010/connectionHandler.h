@@ -4,12 +4,16 @@
 #include <queue>
 #include <string>
 #include "response.h"
+#include "../../event.h"
+
+class eventQueue;
 
 class connectionHandler {
 public:
-	connectionHandler();
+	connectionHandler(eventQueue*);
 	unsigned char* getNextCommand();
 	void addResponse(response &);
+	void addEvent(event&);
 	void commitResponses();
 	void connect();
 	
@@ -20,6 +24,7 @@ private:
 	int setInterfaceAttribs(int, int);
 	void setBlocking(int);
 	void sendAck();
+	eventQueue *eventQ_;
 };
 
 #endif

@@ -1,6 +1,7 @@
 #include "select_xpt.h"
 #include "../response.h"
 #include "../effects/effect.h"
+#include "../../../event.h"
 
 using namespace std;
 
@@ -42,4 +43,9 @@ void select_xpt::exec(unsigned char *nextCommand) {
 
 	eff()->addResponse(tmpResp);
 
+	if(eff()->whoAmI() == 0x01 && nextCommand[2] == 0x80) {
+		event ev(0x00,SET_CURRENT_PGM);
+		ev.params()[0] = nextCommand[3];
+		eff()->addEvent(ev);
+	}
 }

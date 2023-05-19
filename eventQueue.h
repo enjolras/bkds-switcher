@@ -3,20 +3,20 @@
 
 #include <map>
 #include <queue>
+#include "event.h"
 
-class event;
 class node;
 
 class eventQueue {
 public:
 	eventQueue();
 	void addNode(node*);
-	void addEvent(event*);
+	void addEvent(event&);
 	void propagate();
 
 private:
 	std::map<unsigned char,node*> nodes_;
-	std::queue<event*> events_;
+	std::queue<event> events_;
 };
 
 #endif

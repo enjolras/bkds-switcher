@@ -3,13 +3,16 @@
 #include <cstdlib>
 #include <unistd.h>
 #include <thread>
+#include "../../eventQueue.h"
 #include "connectionHandler.h"
 #include "effectDispatcher.h"
 #include "bkds2010.h"
 
-bkds2010::bkds2010() {
+bkds2010::bkds2010(eventQueue* eventQ) : eventQ_(eventQ), node(eventQ) {
 
-	conn_ = new connectionHandler();
+	setNodeId(SENDER_BKDS2010);
+
+	conn_ = new connectionHandler(eventQ);
 	effDisp_ = new effectDispatcher(conn_);
 
 	effDisp_->init();
@@ -23,6 +26,6 @@ void bkds2010::run() {
 
 }
 
-void bkds2010::execEvent() {
+void bkds2010::execEvent(event &ev) {
 
 }

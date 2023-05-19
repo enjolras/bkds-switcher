@@ -3,6 +3,7 @@
 
 #include <map>
 #include <string>
+#include "../../../event.h"
 
 class command;
 class effectDispatcher;
@@ -16,6 +17,7 @@ public:
 	std::string name();
 	unsigned char whoAmI();
 	void addResponse(response&);
+	void addEvent(event&);
 	void setName(std::string);
 	effectDispatcher* effDisp();
 

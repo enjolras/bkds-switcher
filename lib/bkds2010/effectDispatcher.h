@@ -7,12 +7,14 @@
 class connectionHandler;
 class effect;
 class response;
+class event;
 
 class effectDispatcher {
 public:
 	effectDispatcher(connectionHandler*);
 	connectionHandler* conn();
 	void addEffect(effect*);
+	void addEvent(event&);
 	void exec();
 	void init();
 	void addResponse(response&);
