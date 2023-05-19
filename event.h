@@ -1,9 +1,6 @@
 #ifndef EVENT_H
 #define EVENT_H
 
-#define SENDER_BKDS2010		0x00
-#define SENDER_BKDSOBS		0x01
-
 #define SET_CURRENT_PGM		0x00
 #define SET_CURRENT_PVW		0x01
 

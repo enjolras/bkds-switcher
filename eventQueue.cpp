@@ -1,5 +1,6 @@
 #include "eventQueue.h"
 #include "event.h"
+#include "node.h"
 
 eventQueue::eventQueue() {
 
