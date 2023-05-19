@@ -1,15 +1,5 @@
-#include <errno.h>
-#include <fcntl.h>
 #include <cstring>
-#include <termios.h>
-#include <unistd.h>
 #include <cstdio>
-#include <cstdbool>
-#include <cstdlib>
-#include <iostream>
-#include <map>
-#include <string>
-#include <sstream>
 
 #include "response.h"
 

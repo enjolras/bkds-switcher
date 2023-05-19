@@ -15,6 +15,8 @@ add_subdirectory(lib)
 
 add_executable(bkds_switcher
 bkds_switcher.cpp
+event.cpp
+eventQueue.cpp
 )
 
 TARGET_LINK_LIBRARIES (bkds_switcher

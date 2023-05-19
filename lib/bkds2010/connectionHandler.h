@@ -2,7 +2,6 @@
 #define CONNECTION_HANDLER_H
 
 #include <queue>
-#include <deque>
 #include <string>
 #include "response.h"
 

@@ -1,9 +1,6 @@
 #ifndef RESPONSE_H
 #define RESPONSE_H
 
-#include <queue>
-#include <string>
-
 class response {
 public:
 	response();
